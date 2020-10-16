@@ -75,3 +75,10 @@ function toggleSelect(event){
     input.value = button.dataset.value
     
 }
+
+function validate(lat, lng, event){
+    if(lat.value=='' || lng.value==''){
+        event.preventDefault()
+        alert('Selecione um ponto no mapa')
+    }
+}
