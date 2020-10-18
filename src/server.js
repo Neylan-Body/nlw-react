@@ -16,7 +16,11 @@ server
     .get('/', pages.index)
     .get('/orphanage', pages.orphanage)
     .get('/orphanages', pages.orphanages)
+    .post('/orphanages', pages.users)
     .get('/create-orphanage', pages.createOrphanage)
+    .get('/login', pages.login)
+    .get('/forgot-password', pages.forgotPassword)
     .post('/save-orphanage', pages.saveOrphanage)
+    .post('/save-user', pages.saveUser)
 // ligar o servidor
 server.listen(5500);

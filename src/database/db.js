@@ -14,6 +14,12 @@ function execute(db){
             opening_hours TEXT,
             open_on_weekends TEXT
         );
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT type UNIQUE,
+            password TEXT
+        );
     `)
 }
 

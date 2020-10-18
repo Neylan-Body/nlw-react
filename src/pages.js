@@ -1,5 +1,6 @@
 const Database = require('./database/db')
 const saveOrphanage = require('./database/saveOrphanage')
+const saveUser = require('./database/saveUser')
 
 module.exports = {
     index(req, res) {
@@ -59,12 +60,63 @@ module.exports = {
                 opening_hours: fields.opening_hours,
                 open_on_weekends: fields.open_on_weekends,
             })
-            // redireionamento
+            // redirecionamento
             return res.redirect('/orphanages')
         } catch (error) {
             console.log(error);
             return res.send('Erro no banco de dados!')
         }
         
+    },
+
+    async saveUser(req, res) {
+        const fields = req.body
+        // validar se todos os campos estão preenchidos
+        if(Object.values(fields).includes('')){
+            return res.send('Todos os campos devem ser preenchidos!')
+        }
+        try {
+           //salvar um orfanato
+            const db = await Database
+            await saveUser(db,{
+                name: fields['name-sign-up'],
+                email: fields['email-sign-up'],
+                password: fields['password-sign-up']
+            })
+            // redirecionamento
+            return res.redirect('/orphanages')
+        } catch (error) {
+            console.log(error);
+            return res.send('Erro no banco de dados!')
+        }
+        
+    },
+
+    async users(req, res) {
+        const fields = req.body
+        try {
+            var db = await Database;
+            const orphanages = await db.all("SELECT * FROM orphanages")
+            db = null;
+            db = await Database;
+            const users = await db.all(`SELECT * FROM users WHERE users.password="${fields['password-sign-in']}" and users.email="${fields['email-sign-in']}"`)          
+            if(users[0]){
+                return res.render('orphanages',{orphanages:orphanages, users:users[0]})
+            }else{
+                return res.redirect(401,'/login')
+            }
+        } catch (error) {
+            console.log(error)
+            return res.send('Erro no banco de dados')
+        }
+    },
+
+
+    login(req, res){
+        return res.render('login')
+    },
+
+    forgotPassword(req, res){
+        return res.render('forgot-password')
     }
 }
