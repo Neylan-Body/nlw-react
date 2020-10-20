@@ -103,7 +103,8 @@ module.exports = {
             if(users[0]){
                 return res.render('orphanages',{orphanages:orphanages, users:users[0]})
             }else{
-                return res.redirect(401,'/login')
+                return res.render('login',{erro:true})
+                // return res.redirect(401,'/login')
             }
         } catch (error) {
             console.log(error)
@@ -113,7 +114,8 @@ module.exports = {
 
 
     login(req, res){
-        return res.render('login')
+        
+        return res.render('login',{erro:false})
     },
 
     forgotPassword(req, res){

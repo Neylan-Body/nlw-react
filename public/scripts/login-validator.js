@@ -14,6 +14,7 @@ class Validator {
     // inicia a validação de todos os campos
     validate(form) {
       // limpa todas as validações antigas
+      let values = Array();
       let currentValidations = document.querySelectorAll('form .error-validation');
   
       if(currentValidations.length) {
@@ -38,11 +39,12 @@ class Validator {
             let value = input.getAttribute(this.validations[i])
   
             // invoca o método
-            this[method](input,value);
+            values.push(this[method](input,value));
   
           }
         }  
       }, this);
+      return values
     }
   
     // método para validar se tem um mínimo de caracteres
@@ -54,8 +56,9 @@ class Validator {
   
       if(inputLength < minValue) {
         this.printMessage(input, errorMessage);
+        return false;
       }
-  
+      return true;
     }
   
     // método para validar se passou do máximo de caracteres
@@ -67,8 +70,9 @@ class Validator {
   
       if(inputLength > maxValue) {
         this.printMessage(input, errorMessage);
+        return false;
       }
-  
+      return true;
     }
   
     // método para validar strings que só contem letras
@@ -82,8 +86,9 @@ class Validator {
   
       if(!re.test(inputValue)) {
         this.printMessage(input, errorMessage);
+        return false;
       }
-  
+      return true;
     }
   
     // método para validar e-mail
@@ -96,8 +101,9 @@ class Validator {
   
       if(!re.test(email)) {
         this.printMessage(input, errorMessage);
+        return false;
       }
-  
+      return true;
     }
     
     // método para exibir inputs que são necessários
@@ -108,8 +114,9 @@ class Validator {
         let errorMessage = `Este campo é obrigatório`;
   
         this.printMessage(input, errorMessage);
+        return false;
       }
-  
+      return true;
     }
   
     // validando o campo de senha
@@ -133,7 +140,9 @@ class Validator {
         let errorMessage = `A senha precisa um caractere maiúsculo e um número`;
   
         this.printMessage(input, errorMessage);
+        return false;
       }
+      return true;
   
     }
   
@@ -165,16 +174,32 @@ class Validator {
   
   }
   
-  let form = document.getElementById('register-form');
-  let submit = document.getElementById('btn-submit-register');
+  let formRegister = document.getElementById('register-form');
+  let submitRegister = document.getElementById('btn-submit-register');
+
+  let formLogin = document.getElementById('login-form');
+  let submitLogin = document.getElementById('btn-submit-login');
   
   let validator = new Validator();
   
   // evento de envio do form, que valida os inputs
-  submit.addEventListener('click', function(e) {
+  submitRegister.addEventListener('click', function(e) {
     
     try {
-      validator.validate(form);  
+      if(validator.validate(formRegister).indexOf(false)>-1){
+        e.preventDefault(); 
+      }
+    } catch (error) {
+      e.preventDefault();  
+    }
+  });
+
+  submitLogin.addEventListener('click', function(e) {
+    
+    try {
+      if(validator.validate(formLogin).indexOf(false)>-1){
+        e.preventDefault(); 
+      }
     } catch (error) {
       e.preventDefault();  
     }
