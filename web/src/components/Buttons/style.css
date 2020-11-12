@@ -1,0 +1,75 @@
+ a.create-orphanage {
+    position: absolute;
+  
+    border: 0;
+  
+    right: 40px;
+    bottom: 40px;
+  
+    width: 64px;
+    height: 64px;
+    background: #15C3D6;
+    border-radius: 20px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    z-index: 10;
+  
+    cursor: pointer;
+  
+    transition: background-color 0.2s;
+  }
+  
+   a.create-orphanage:hover {
+    background: #17D6EB;
+  }
+  
+   a.login {
+    position: absolute;
+    right: 4rem;
+    top: 4rem;
+  
+    z-index: 10;
+  
+    width: 64px;
+    height: 64px;
+    background: #15C3D6;
+    border: 0;
+    border-radius: 20px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    transition: background-color 200ms;
+  }
+  
+   a.login:hover {
+    background: #17D6Eb
+  }
+  
+   a.logof {
+    position: absolute;
+    right: 4rem;
+    top: 4rem;
+  
+    z-index: 10;
+  
+    width: 64px;
+    height: 64px;
+    background: #15C3D6;
+    border: 0;
+    border-radius: 20px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    transition: background-color 200ms;
+  }
+  
+   a.logof:hover {
+    background: #17D6Eb
+  }

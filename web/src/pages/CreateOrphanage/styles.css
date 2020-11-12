@@ -1,0 +1,256 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    color: white;
+    background: #ebf2f5;
+}
+
+body, input, button, textarea{
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1;
+    font-family: 'Nunito', sans-serif;
+}
+
+#page-create-orphanage {
+    display: flex;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.map-container {
+    margin: 0 0 4rem;
+}
+
+.map-container .leaflet-container {
+    border-radius: 20px 20px 0 0;
+}
+
+.map-container footer {
+    background: #f5f8fa;
+    border-radius: 0 0 20px 20px;
+}
+
+aside.sidebar {
+    top: 0;
+}
+
+form {
+    width: 70rem;
+    margin: 6.4rem auto;
+    background: white;
+    border: 1px solid #d3e2e5;
+    border-radius: 2rem;
+    overflow: hidden;
+    padding: 8rem;
+}
+
+fieldset {
+    border: 0;   
+}
+
+fieldset + fieldset {
+    margin-top: 8rem;
+}
+
+fieldset legend {
+    width: 100%;
+    font-size: 3.2rem;
+    line-height: 1.5;
+    color: #5c8599;
+    font-weight: 700;
+    border-bottom: 1px solid #d3e2e5;
+    margin-bottom: 4rem;
+    padding-bottom: 2.4rem;
+}
+
+.input-block + .input-block {
+    margin-top: 2.4rem;
+}
+
+.input-block label {
+    color: #8fa7b3;
+    margin-bottom: .8rem;
+    line-height: 1.5;
+}
+
+.input-block label span {
+    font-size: 1.4rem;
+    color: #8fa7b3;
+    margin-left: 2.4rem;
+    line-height: 1.5;
+}
+
+.input-block input,
+.input-block textarea {
+    width: 100%;
+    background: #f5f8fa;
+    border: 1px solid #d3e2e5;
+    border-radius: 2rem;
+    color: #5c8599;
+
+}
+
+.input-block input {
+    height: 6.4rem;
+    padding: 0 1.6rem
+}
+
+.input-block input:valid,
+.input-block textarea:valid {
+    border: 1px solid #a1e9c5;
+}
+
+.input-block textarea {
+    height: clamp(12rem, 16rem, 24rem);
+    resize: vertical;
+    padding: 1.6rem;
+    line-height: 2.8rem;
+}
+
+.input-block input:focus,
+.input-block textarea:focus {
+    border: 2px solid red;
+}
+
+.input-block.images button {
+    border: 1px dashed #96d2f0;
+    width: 100%;
+    background: #f5f8fa;
+    height: 6.4rem;
+    padding: 0 1.6rem;
+    margin-top: 2.4rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.new-upload {
+    position: relative;
+}
+
+.new-upload + .new-upload {
+    margin-top: 2.4rem;
+}
+
+.new-upload span{
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: #FFFFFF;
+    border: 1px solid #D3E2E5;
+    box-sizing: border-box;
+    display: flex;
+    border-radius: 10px;
+    padding: .6rem;
+    cursor: pointer;
+}
+
+.map-container {
+    margin-top: 6.4rem;
+    background: #e6f7fb;
+    border: 1px solid #dde3f0;
+    border-radius: 2rem;
+}
+
+#mapid {
+    width: 100%;
+    height: 28rem;
+}
+
+.map-container footer {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.map-container footer a {
+    color: #0089a5;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.map-container .leaflet-container {
+    border-bottom: 1px solid #dde3f0;
+    border-radius: 2rem;
+}
+
+.primary-button {
+    margin-top: 6.4rem;
+    width: 100%;
+    height: 6.4rem;
+    border: 0;
+    cursor: pointer;
+    background: #3cdc8c;
+    border-radius: 2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .2s;
+    text-decoration: none;
+}
+
+.primary-button:hover {
+    background: #36CF82;
+}
+
+.primary-button img {
+    margin-right: 1.6rem;
+}
+
+.button-select {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.button-select button {
+    height: 6.4rem;
+    background: #f5f8fa;
+    border: 1px solid #d3e2e5;
+    color: #5c8599;
+    cursor: pointer;
+}
+
+.button-select button.active {
+    background: #edfff6;
+    border: 1px solid #a1e9c5;
+    color: #37c77f;
+}
+
+.button-select button:first-child {
+    border-radius: 2rem 0 0 2rem;
+}
+
+.button-select button:last-child {
+    border-radius: 0 2rem 2rem 0;
+}
+
+#point {
+    width: 100%;
+    height: 9rem;
+}
+
+#point h3 {
+    /* margin: 0 16%;
+    z-index: 10;
+    width: 100%;
+    height: 28rem; */
+    color: #8fa7b3;
+    text-align: center;
+    /* left: 495px;
+    top: 513px; */
+    background: #F5F8FA;
+    text-decoration: none;
+    border-radius: 0px 0px 16px 16px;
+}
