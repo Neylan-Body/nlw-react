@@ -4,7 +4,8 @@ import { FiClock, FiInfo } from "react-icons/fi";
 import { Marker} from "react-leaflet";
 import L from 'leaflet';
 import { IOrphanage } from '../OrphanagesMap';
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 import PrimaryButton from "../../components/PrimaryButton";
@@ -33,11 +34,16 @@ export default function Orphanage() {
 
   const [getOrphanage, setOrphanage] = useState<IOrphanage>();
     const [getActiveImageIndex, setActiveImageIndex] = useState(0);
-
+    const location = useLocation();
+    const user = location.state
     const params = useParams<IRouteParams>();
+    const history = useHistory();
 
     useEffect( () => {
         fetchOrphanage();
+        if(!user){
+            history.push('/');
+        }
     }, [params.id]);
 
     async function fetchOrphanage() {

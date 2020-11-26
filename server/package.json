@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Diego Fernandes <diego.schell.f@gmail.com>",
+  "author": "Neylan Oliveira dos Santos <neylan2011@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev:server": "ts-node-dev src/server.ts --transpile-only --ignore-watch node_modules --respawn",

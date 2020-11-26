@@ -1,9 +1,11 @@
-import React, {useState,FormEvent} from "react";
+import React, {useState,FormEvent,useEffect} from "react";
 import {Marker} from 'react-leaflet';
 import L from 'leaflet';
 import { useLocation } from "react-router-dom";
 import PrimaryButton from "../../components/PrimaryButton";
 import Sidebar from "../../components/Sidebar";
+import AddFile from "../../assets/images/add-file.svg";
+import RemoveFile from "../../assets/images/remove-file.svg";
 
 import './style';
 import './styles.css';
@@ -40,8 +42,12 @@ export default function CreateOrphanage() {
     const [getOpenOnWeekends, setOpenOnWeekends] = useState(true);
     const location = useLocation();
     const user = location.state
-
     const history = useHistory();
+    useEffect( () => {
+        if(!user){
+            history.push('/');
+        }
+    }, []);
     async function handleSubmit(event: FormEvent) {
         
         event.preventDefault();
@@ -108,11 +114,11 @@ export default function CreateOrphanage() {
               <div className="images-upload" id="images">
                   <div className="new-upload">
                       <input className="takeValue" name="images" placeholder="Cole o link da foto aqui" type="url" required/>
-                      <span  onClick={(event) => deleteField(event)}><img src="/images/remove-file.svg" alt="Remover foto"/></span>
+                      <span  onClick={(event) => deleteField(event)}><img src={RemoveFile} alt="Remover foto"/></span>
                   </div>
               </div>
               <button onClick={() => addPhotoField()} type="button">
-                  <img src="/images/add-file.svg" alt="Nova imagem"/>
+                  <img src={AddFile} alt="Nova imagem"/>
               </button>
               <br/>
             </div>
