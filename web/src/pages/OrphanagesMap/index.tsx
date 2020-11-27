@@ -19,7 +19,7 @@ const happyMapIcon = L.icon({
 });
 
 export interface IOrphanage {
-  id: number;
+  id: string;
   name: string;
   latitude: number;
   longitude: number;
@@ -36,7 +36,7 @@ export interface IOrphanage {
 }
 
 export interface IUser {
-  id: number;
+  id: string;
   name: string;
   email: string;
   password: string;
