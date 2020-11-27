@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import * as Yup from 'yup';
+const crypto = require('crypto');
 // ...
 
 
@@ -22,8 +23,9 @@ export default {
         } = request.body;
         
         const usersRepository = getRepository(User);
-
+        const id = crypto.randomBytes(4).toString('HEX');
         const data = {
+        id,
         name,
         email,
         password,
@@ -43,7 +45,7 @@ export default {
         
         await usersRepository.save(user);
     
-        return response.render('login');
+        return response.json({id});
     },
 
     async show(request: Request, response: Response) {

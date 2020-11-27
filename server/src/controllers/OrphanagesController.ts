@@ -6,6 +6,7 @@ import Orphanage from "../models/Orphanage";
 import User from "../models/User";
 import Image from "../models/Image";
 import { array } from "yup";
+const crypto = require('crypto');
 
 export default {
   async index(request: Request, response: Response) {
@@ -15,7 +16,7 @@ export default {
       relations: ['images']
     });
     
-    var user = {id:0,name:'',password:'',email:''};
+    var user = {id:'',name:'',password:'',email:''};
 
     return response.json(orphanagesView.renderMany(orphanages, user));
   },
@@ -52,7 +53,9 @@ export default {
       img.path = images[index];
       arrayImages.push(img)
     }
+    const id = crypto.randomBytes(4).toString('HEX');
     const data = {
+      id,
       name,
       latitude,
       longitude,
